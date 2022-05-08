@@ -1,0 +1,137 @@
+\section{联络}
+
+对于任意标量场$\phi\in \varGamma(T_{(0, 0)}M)$, 其外微分
+\begin{eqnarray}
+  d\phi=\frac{\partial\phi}{\partial x^\mu}dx^\mu=\frac{\partial\phi}{\partial {x}^\mu}\frac{\partial{x}^\mu}{\partial {x'}^\nu}d{x'}^\nu=\frac{\partial{\phi'}}{\partial {x'}^\nu}d{x'}^\nu\in \varGamma(T_{(0, 1)}M),
+\end{eqnarray}
+这意味着$d\phi$仍是张量丛截面的元素, 用学物理家的话来说也就是$d\phi$仍然满足张量的变换规律.
+
+一个自然的问题是, 对于切矢量场或余切矢量场, 它们的外微分是否仍然是张量丛截面的元素? 但问题就出在这, 外微分算子是一个定义在外形式丛截面上的线性算子, 而切矢量场不是外形式丛截面的元素, 因此我们无法对一个切矢量场求外微分；余切矢量场是外形式丛截面的元素, 而外形式丛只是协变张量丛的子集, 因此我们无法通过外微分运算得到一个非全反对称的高阶协变张量场. 这些引申出的问题意味着我们需要推广外微分算子, 并期望得到一个定义在一般张量丛截面$\varGamma(T_{(p, q)}M)$上的线性微分算子, 使我们能对那些不在外形式丛截面中的张量场进行“微分”运算. 这样构造的线性微分算子被称为\textbf{仿射联络}.
+
+\begin{remark}
+  1微分形式$\omega\in \varGamma(\Lambda^{1}(M^{*}))$在局部坐标系改变时满足
+  \begin{eqnarray}\label{eq:domega1}
+    \omega=\omega_\mu dx^\mu=\omega_\mu\frac{\partial{x}^\mu}{\partial {x'}^\nu}d{x'}^\nu=\omega'_\nu d{x'}^\nu,
+  \end{eqnarray}
+  我们对(\ref{eq:domega1})求全微分得到
+  \begin{eqnarray}\label{eq:domega2}
+    d\omega
+    &=& d{\omega'}_{\nu} \wedge d{x'}^\nu\notag\\
+    &=& d\left(\omega_\mu\frac{\partial{x}^\mu}{{\partial}{x'}^\nu}\right)\wedge d{x'}^\nu\notag\\
+    &=& \frac{\partial{x}^\mu}{{\partial}{x'}^\nu}d\omega_\mu{\wedge}d{x'}^\nu+\omega_{\mu}d\left(\frac{\partial{x}^\mu}{\partial {x'}^\nu}\right){\wedge}d{x'}^\nu\notag\\
+    &=& \left(\frac{\partial{\omega}_\mu}{{\partial}{x}^\sigma}\frac{\partial{x}^\sigma}{\partial {x'}^\rho}\frac{\partial{x}^\mu}{{\partial}{x'}^\nu} + {\omega}_\mu\frac{\partial^2{x}^\mu}{\partial {x'}^\rho{\partial}{x'}^\nu}\right)d{x'}^\rho{\wedge}d{x'}^\nu\\
+    &=& \frac{\partial\omega'_\nu}{{\partial}{x'}^\rho}d{x'}^\rho{\wedge}d{x'}^\nu\notag,
+  \end{eqnarray}
+  其中
+  \begin{eqnarray*}
+    \frac{\partial\omega'_\nu}{{\partial}{x'}^\rho} \equiv \frac{\partial{\omega}_\mu}{{\partial}{x}^\sigma}\frac{\partial{x}^\sigma}{\partial {x'}^\rho}\frac{\partial{x}^\mu}{{\partial}{x'}^\nu}.
+  \end{eqnarray*}
+  注意到(\ref{eq:domega2})中产生了一个二阶偏微分项, 与张量的变换规律对比可知, 这一项破坏了张量的变换规律. 但外微分形式场的全反对称特性可以消除掉这一项带来的影响, 即
+  \begin{eqnarray}
+    \frac{\partial\omega'_\nu}{{\partial}{x'}^\rho}d{x'}^\rho{\wedge}d{x'}^\nu&=&2\partial'_{[\rho}\omega'_{\nu]}{dx'}^{\rho}\otimes{dx'}^\nu\notag\\
+    &=&2\left(\partial_{[\sigma}\omega_{\mu]}\frac{\partial{x}^\sigma}{\partial {x'}^\rho}\frac{\partial{x}^\mu}{{\partial}{x'}^\nu}+{\omega}_\mu\frac{\partial^2{x}^\mu}{\partial {x'}^{[\rho}{\partial}{x'}^{\nu]}}\right){dx'}^{\rho}\otimes{dx'}^\nu\notag\\
+    &=&2\partial_{[\sigma}\omega_{\mu]}\frac{\partial{x}^\sigma}{\partial {x'}^\rho}\frac{\partial{x}^\mu}{{\partial}{x'}^\nu}{dx'}^{\rho}\otimes{dx'}^\nu,
+  \end{eqnarray}
+  所以$d\omega$实际上仍是张量场. 但微分形式场说到底只是一种特殊的全反对称张量场, 对于一般的张量场, 我们无法通过张量场自身的对称性消除上述二阶偏微分项.
+\end{remark}
+
+我们先讨论切丛$T_{(1, 0)}(M)$上的仿射联络, 然后逐步构造出张量丛$T_{(p, q)}(M)$上的联络. 下面, 我们直接给出仿射联络的定义.
+
+\begin{definition}
+  仿射联络是一个映射
+  \begin{eqnarray}\label{def:connection}
+    D:\varGamma(T_{(1, 0)}M)\rightarrow \varGamma(T_{(1, 1)}M),
+  \end{eqnarray}
+  它满足下列条件:
+  \begin{enumerate}
+    \item 对任意的$A, B\in \varGamma(T_{(1, 0)}M)$有 D(A+B)=D(A)+D(B);
+    \item 对任意的$A\in \varGamma(T_{(1, 0)}M), \alpha\in \varGamma(T_{(0, 0)}M)$有$D(\alpha A)=d\alpha\otimes A+\alpha D(A)$.
+  \end{enumerate}
+
+\end{definition}
+
+局部上, 仿射联络由一组1微分形式给出. 我们先来看自然切标架场$\{\partial_\mu\}$的联络, 命
+\begin{eqnarray}
+  D(\partial_\mu)={\omega^\rho}_\mu \otimes\partial_\rho={\varGamma^\rho}_{\mu\nu}dx^\nu\otimes \partial_\rho,
+\end{eqnarray}
+其中${\omega^\rho}_\mu={\varGamma^\rho}_{\mu\nu}dx^\nu$, ${\varGamma^\rho}_{\mu\nu}$称为\textbf{联络系数}, 它是局部坐标系中的光滑函数. 将${\omega^\rho}_\mu$作为矩阵$\omega$第$\rho$行第$\mu$列的元素, 这样构造的矩阵$\omega$称为\textbf{联络方阵}. 可见, 任意两个联络间的差异完全体现在联络方阵上. 现在, 我们来看联络的变换规律. 在标架变换下, 由联络的定义立即得到
+\begin{eqnarray}
+  D(\partial'_\nu)&=&D\left(\frac{\partial{x^\mu}}{\partial{x'}^\nu}{\partial}_\mu\right)\notag\\
+  &=&d\left(\frac{\partial{x^\mu}}{\partial{x'}^\nu}\right)\otimes{\partial}_\mu+\frac{\partial{x^\mu}}{\partial{x'}^\nu}D\left({\partial}_\mu\right)\notag\\
+  &=&\left[d\left(\frac{\partial{x^\rho}}{\partial{x'}^\nu}\right)+\frac{\partial{x^\mu}}{\partial{x'}^\nu}{\omega^\rho}_\mu\right]\otimes{\partial}_\rho\notag\\
+  &=&\left[d\left(\frac{\partial{x^\rho}}{\partial{x'}^\nu}\right)\frac{\partial{{x'}^\sigma}}{\partial{x^\rho}}+\frac{\partial{x^\mu}}{\partial{x'}^\nu}{\omega^\rho}_\mu\frac{\partial{{x'}^\sigma}}{\partial{x^\rho}}\right]\otimes\partial'_\sigma\notag\\
+  &=&{\omega'}^\sigma_\nu\otimes\partial'_\sigma,
+\end{eqnarray}
+其中
+\begin{eqnarray}\label{eq:connection}
+  {\omega'}^\sigma_\nu=d\left(\frac{\partial{x^\rho}}{\partial{x'}^\nu}\right)\frac{\partial{{x'}^\sigma}}{\partial{x^\rho}}+\frac{\partial{x^\mu}}{\partial{x'}^\nu}{\omega^\rho}_\mu\frac{\partial{{x'}^\sigma}}{\partial{x^\rho}},
+\end{eqnarray}
+这就是联络方阵在局部标架场改变时的变换公式. 进一步展开(\ref{eq:connection})得到
+
+\begin{eqnarray}
+  {{\varGamma'}^\sigma}_{\nu\lambda}=\frac{\partial^2{x^\rho}}{\partial{x'}^\lambda\partial{x'}^\nu}\frac{\partial{{x'}^\sigma}}{\partial{x^\rho}}+{\varGamma^\rho}_{\mu\alpha}\frac{\partial{x^\mu}}{\partial{x'}^\nu}\frac{\partial{x}^\alpha}{\partial{x'}^\lambda}\frac{\partial{{x'}^\sigma}}{\partial{x^\rho}},
+\end{eqnarray}
+这正是通常意义下的联络变换公式. 可见联络系数${\varGamma^\rho}_{\mu\nu}$并不是一个张量, 但引入它能使$D(\partial_\mu)$遵循张量的变换规律.
+
+\begin{remark}
+若使用全反对称化的技巧, 我们也能利用联络系数构造出一个张量. 我们将在稍后给出具体讨论.
+\end{remark}
+
+切丛截面上的联络(\ref{def:connection})在余切丛截面上诱导出一个从$\varGamma(T_{(0, 1)}M)$到$\varGamma(T_{(0, 2)}M)$的联络(仍记为$D$), 它由下式确定
+
+$$d\left(\partial_\mu, dx^\nu\right)=\left(D(\partial_\mu), dx^\nu\right)+\left(\partial_\mu, D(dx^\nu)\right).$$
+
+我们设$D(dx^\nu)={{\omega^*}^\nu}_\rho\otimes{dx}^\rho$, 得到
+$$\left(\partial_\mu, D(dx^\nu)\right)=\left(\partial_\mu, {{\omega^*}^\nu}_\rho\otimes{dx}^\rho\right)={\omega^*}^\nu_\rho\delta^\rho_\mu={{\omega^*}^\nu}_\mu. $$
+考虑到对偶标架满足$\left(\partial_\mu, dx^\nu\right)=\delta^\nu_\mu$, 得到
+\begin{eqnarray}\begin{aligned}
+    {{\omega^*}^\nu}_\mu&=&\left(\partial_\mu, D(dx^\nu)\right)=-\left(D(\partial_\mu), dx^\nu\right)\\
+    &=&-\left({\omega^\rho}_\mu\otimes\partial_\rho, dx^\nu\right)=-{\omega}^\rho_\mu\delta^\nu_\rho=-{\omega}^\nu_\mu,
+\end{aligned}\end{eqnarray}
+即$D(dx^\nu)=-{\omega}^\nu_\rho\otimes{dx}^\rho$.
+
+至此, 我们就能计算任意$A\in \varGamma(T_{(1, 0)}M)$与$B\in \varGamma(T_{(0, 1)}M)$的联络了. 在局部坐标系下, 我们有
+\begin{eqnarray}\begin{aligned}
+    D(A)&=D(A^\mu\partial_\mu)\\
+    &=dA^\mu\otimes\partial_\mu+A^{\mu}D(\partial_\mu)\\
+    &=(\partial_{\rho}A^\mu+A^{\nu}{\varGamma^\mu}_{\nu\rho})dx^\rho{\otimes}\partial_\mu\\
+    &=\nabla_{\rho}A^{\mu}dx^\rho{\otimes}\partial_\mu;
+\end{aligned}\end{eqnarray}
+\begin{eqnarray}\begin{aligned}
+    D(B)&=D(B_{\mu}{dx}^\mu)\\
+    &=dB_\mu\otimes{dx}^\mu+B_{\mu}D({dx}^\mu)\\
+    &=(\partial_{\rho}B_\mu-B_\nu{\varGamma^\nu}_{\mu\rho})dx^\rho{\otimes}dx^\mu\\
+    &=\nabla_{\rho}B_{\mu}dx^\rho{\otimes}dx^\mu,
+\end{aligned}\end{eqnarray}
+其中
+\begin{eqnarray}\label{eq:derivative}
+  \nabla_{\rho}A^\mu&=&\partial_{\rho}A^\mu+A^{\nu}{\varGamma^\mu}_{\nu\rho};\\
+  \nabla_{\rho}B_{\mu}&=&\partial_{\rho}B_\mu-B_\nu{\varGamma^\nu}_{\mu\rho},
+\end{eqnarray}
+(\ref{eq:derivative})正是通常意义下的\textbf{协变导数}运算. 由此可见, 协变导数是一种依赖于局部坐标系的分量表述. 用类似的方法, 我们能得到$T_{(p, q)}(M)$上的诱导联络.
+
+\begin{definition}
+  在一般张量丛$T_{(p, q)}M$上, 由仿射联络诱导的联络是一个映射
+  $$D:\varGamma(T_{(p, q)}M)\rightarrow\varGamma(T_{(p, q+1)}M), $$
+  设任意$S\in \varGamma(T_{(p, q)}M)$, 则$S$的联络在局部坐标系下满足如下运算
+  \begin{eqnarray}
+    \begin{aligned}
+      D(S)&=D({S^{\mu_1\dots\mu_p}}_{\nu_1\dots\nu_q}\partial_{\mu_1}\otimes\dots\otimes\partial_{\mu_p}\otimes{dx}^{\nu_1}\otimes\dots\otimes{dx}^{\nu_q})\\
+      %&=d({S^{\mu_1\dots\mu_p}}_{\nu_1\dots\nu_q})\otimes\partial_{\mu_1}\otimes\dots\otimes\partial_{\mu_p}\otimes{dx}^{\nu_1}\otimes\dots\otimes{dx}^{\nu_q}\notag\\
+      %&+{S^{\mu_1\dots\mu_p}}_{\nu_1\dots\nu_q}D(\partial_{\mu_1})\otimes\dots\otimes\partial_{\mu_p}\otimes{dx}^{\nu_1}\otimes\dots\otimes{dx}^{\nu_q}\notag\\
+      %&+\dots+{S^{\mu_1\dots\mu_p}}_{\nu_1\dots\nu_q}\partial_{\mu_1}\otimes\dots\otimes D({\partial_{\mu_p}})\otimes{dx}^{\nu_1}\otimes\dots\otimes{dx}^{\nu_q}\notag\\
+      %&+{S^{\mu_1\dots\mu_p}}_{\nu_1\dots\nu_q}\partial_{\mu_1}\otimes\dots\otimes{\partial_{\mu_p}}\otimes D({dx}^{\nu_1})\otimes\dots\otimes{dx}^{\nu_q}\notag\\
+      %&+\dots+{S^{\mu_1\dots\mu_p}}_{\nu_1\dots\nu_q}\partial_{\mu_1}\otimes\dots\otimes{\partial_{\mu_p}}\otimes{dx}^{\nu_1}\otimes\dots\otimes D({dx}^{\nu_q})\notag\\
+      %&=(\partial_\rho{S^{\mu_1\dots\mu_p}}_{\nu_1\dots\nu_q}+{S^{\sigma\dots\mu_p}}_{\nu_1\dots\nu_q}{\varGamma^{\mu_1}}_{\sigma\rho}\notag\\
+      %&+\dots+{S^{\mu_1\dots\sigma}}_{\nu_1\dots\nu_q}{\varGamma^{\mu_p}}_{\sigma\rho}-{S^{\mu_1\dots\mu_p}}_{\sigma\dots\nu_q}{\varGamma^{\sigma}}_{\nu_1\rho}\notag\\
+      %&-\dots-{S^{\mu_1\dots\mu_p}}_{\nu_1\dots\sigma}{\varGamma^{\sigma}}_{\nu_q\rho})dx^\rho\otimes\partial_{\mu_1}\otimes\dots\otimes\partial_{\mu_p}\otimes{dx}^{\nu_1}\otimes\dots\otimes{dx}^{\nu_q}\notag\\
+      &=\nabla_{\rho}{S^{\mu_1\dots\mu_p}}_{\nu_1\dots\nu_q}dx^\rho\otimes\partial_{\mu_1}\otimes\dots\otimes\partial_{\mu_p}\otimes{dx}^{\nu_1}\otimes\dots\otimes{dx}^{\nu_q},
+    \end{aligned}
+  \end{eqnarray}
+  其中
+  \begin{eqnarray}\begin{aligned}
+      \nabla_{\rho}{S^{\mu_1\dots\mu_p}}_{\nu_1\dots\nu_q}&=\partial_\rho{S^{\mu_1\dots\mu_p}}_{\nu_1\dots\nu_q}\\
+      &+{S^{\sigma\dots\mu_p}}_{\nu_1\dots\nu_q}{\varGamma^{\mu_1}}_{\sigma\rho}+\dots+{S^{\mu_1\dots\sigma}}_{\nu_1\dots\nu_q}{\varGamma^{\mu_p}}_{\sigma\rho}\\
+      &-{S^{\mu_1\dots\mu_p}}_{\sigma\dots\nu_q}{\varGamma^{\sigma}}_{\nu_1\rho}-\dots-{S^{\mu_1\dots\mu_p}}_{\nu_1\dots\sigma}{\varGamma^{\sigma}}_{\nu_q\rho}.
+  \end{aligned}\end{eqnarray}
+\end{definition}

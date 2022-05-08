@@ -1,0 +1,3 @@
+[submodule "components/NotesTeX"]
+	path = components/NotesTeX
+	url = git@github.com:Adhumunt/NotesTeX.git
