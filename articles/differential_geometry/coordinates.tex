@@ -1,0 +1,120 @@
+\section{局部坐标系}\label{sec:Coordinates}
+微分几何的研究对象是一个称为\textbf{流形}(Manifold)\sidenote{天地有正气, 杂然赋流形. 下则为河岳, 上则为日星. 於人曰浩然, 沛乎塞苍冥.\\\rightline{文天祥《正气歌》, 江泽涵译}}的集合, 其上拥有线性结构与自然的拓扑结构.为了引出流形, 我们先回顾一下线性空间、度量空间以及拓扑空间的公理化构造, 然后逐步往集合上添加这些结构.
+\begin{definition}
+  域$F$上的线性空间$V$是这样一个集合, 对任意$\alpha,\beta,\gamma\in V$;$a,b\in F$有
+
+  矢量加法映射$V\times V\rightarrow V$: \\
+  1)(交换律)$\alpha+\beta=\beta+\alpha$;\\
+  2)(结合律)$(\alpha+\beta)+\gamma=\alpha+(\beta+\gamma)$;\\
+  3)(零元)存在唯一的$0\in V$, 使得$0+\alpha=\alpha$;\\
+  4)(逆元)对任意$\alpha\in V$, 存在唯一的$\beta\in V$, 使得$\alpha+\beta=0$.
+
+  矢量数乘映射$F\times V\rightarrow V$: \\
+  5)(酉性)对$1\in F$, 有$1\alpha=\alpha$;\\
+  6)(结合律)$a(b\alpha)=(ab)\alpha$;\\
+  7)(分配律1)$(a+b)\alpha=a\alpha+b\alpha$;\\
+  8)(分配律2)$a(\alpha+\beta)=a\alpha+a\beta$.
+\end{definition}
+我们用$\mathbb{R}$表示实数域, 记$\mathbb{R}^n$表示全体n元有序实数组构成的集合.任意$x\in\mathbb{R}^n$的第$i$个坐标均可用实数$x^i$表示, 其中$i=1,\cdots,n$, 称为\textbf{抽象指标}.
+\begin{remark}
+  需要注意的是, 坐标$x^i$的上指标的标记方法是习惯上的约定, 不可随意变更为下指标.我们会在稍晚些时候看出, 这是非常有效的的符号表征方法.
+\end{remark}
+$\mathbb{R}^n$除了上述的线性构造, 还具有自然的度量结构.
+\begin{definition}
+  $S$是一个集合, 若存在一个映射$d:S\times S\rightarrow \mathbb{R}$, 使得对于任意$x,y\in S$都满足
+
+  1)(正定性)$d(x,y)\geqslant 0$, 且$d(x,y)=0$当且仅当$x=y$时成立;\\
+  2)(对称性)$d(x,y)=d(y,x)$;\\
+  3)(三角不等式)$d(x,z)+d(z,y)\geqslant d(x,y)$,
+
+  则称$(S,d)$是一个度量空间, 映射$d$称为$S$上的度量.
+\end{definition}
+对任意$x,y\in \mathbb{R}^n$, 命
+\begin{equation}\label{eq:metric of R}
+  \begin{split}
+    d:\mathbb{R}^n\times \mathbb{R}^n\rightarrow R,(x,y)\mapsto d(x,y)=\sqrt{\sum_{i=1}^n(x^i-y^i)^2},
+  \end{split}
+\end{equation}
+容易验证映射(\ref{eq:metric of R})满足度量的定义, 于是$(\mathbb{R}^n,d)$是一个度量空间.
+\begin{remark}
+  需要注意的是, 此时我们仅引入了度量结构(而不是内积结构), 所以此时只有“距离”的概念, 尚且没有“角度”的概念.
+\end{remark}
+可以发现, $\mathbb{R}^n$还拥有自然的拓扑结构.
+\begin{definition}
+  设$S$是一个集合, $O$是一些$S$的子集构成的集合.若$O$满足
+
+  1)$\varnothing\in O$且$S\in O$;\\
+  2)$O$中任意多个元素的并集仍是$O$的元素;\\
+  3)$O$中有限多个元素的交集仍是$O$的元素,
+
+  则称$(S,O)$是一个拓扑空间, $O$的元素称为开集.
+\end{definition}
+在$\mathbb{R}^n$中, 记半径为$r$的开球为$$O(x,r)=\left\{y\in\mathbb{R}^n:d(x,y)<r\right\},$$若命
+$$O=\left\{O(x,r):x\in\mathbb{R}^n,r>0\right\},$$
+则$(\mathbb{R}^n,O)$成为一个拓扑空间.我们陆续为集合$\mathbb{R}^n$加上线性结构、度量结构、拓扑结构后, $\mathbb{R}^n$便称为Euclidean空间.
+\begin{remark}
+  这是Chern的表述.但笔者认为这样构造的$\mathbb{R}^n$上还没有内积结构, 似乎并不能被称为“欧氏空间”.笔者认为Chern这样构造是想通过$\mathbb{R}^n$的拓扑结构与流形的拓扑结构对应.欧氏空间的一个比较通俗的定义是直接往线性结构上附加内积结构, 不必有拓扑结构.
+\end{remark}
+拓扑空间上还可以加入额外的Hausdorff性质, 这种性质强调了拓扑空间是无限可分的.
+\begin{definition}
+  设$(S,O)$是一个拓扑空间, 若对于任意两点$x,y\in S$, 都存在邻域$O(x,a),O(y,b)\in O$, 使得$O(x,a)\cap O(y,b)\neq \varnothing$, 则称这个拓扑空间是Hausdorff空间.
+\end{definition}
+然后便可以给出流形的定义了.
+\begin{definition}
+  设$(M,O)$是一个Hausdorff空间.若对于任意一点$x\in M$, 都存在邻域$O(x,r)\in O$同胚于$\mathbb{R}^n$的一个开集, 则称$M$是一个$n$维\textbf{拓扑流形}.
+\end{definition}
+\begin{remark}
+  “同胚”指的是一个映射
+  \begin{equation}
+    \begin{split}
+      \varphi_{O_i}:O_i\subset O\rightarrow U\subset \mathbb{R}^n,u\in O_i\mapsto x^\mu\in U,
+    \end{split}
+  \end{equation}
+  形象的说, 就是将弯曲空间的局部与欧氏空间等同起来, 建立一个一一对应的映射关系.我们将$(O_i,\varphi_{O_i})$称为流形$M$的一个\textbf{坐标卡}(Chart).同胚是一种在拓扑上很强的映射关系, 以至于我们可以直接将映射$\varphi_{O_i}$的定义域和值域视为等同, 直接将任意一点$u$(这是流形$M$的元素)的坐标定义成它在同胚映射$\varphi_{O_i}$下的像(这是欧氏空间$\mathbb{R}^n$的元素):
+  \begin{equation}
+    \begin{split}
+      x\equiv \varphi_{O_i}(u),
+    \end{split}
+  \end{equation}
+  我们将$(O_i,x^\mu)$称为一个\textbf{局部坐标系}.
+\end{remark}
+有了流形局部与欧氏空间的同胚关系, 我们便可以在流形上逐点定义同胚映射, 用可数个局部坐标系覆盖整个流形.由于流形上的每个邻域$O(x,r)$都是开集, 为了让这些开集能将流形覆盖, 则相邻开集的交集必不为空集(这里就用到了流形的Hausdorff性质), 现在我们来看看这个交集上会发生什么.
+
+假设$(O_i,x)$和$(O_j,x')$是流形上的两个局部坐标系, 且$O_i\cap O_j\neq \varnothing$.由于同胚映射是一一的, 这意味着它还是可逆的, 于是在$O_i$和$O_j$的交叠区域$O_i\cap O_j$(这也是一个开集)中可定义一个复合的同胚映射$\varphi_{O_j}\circ \varphi^{-1}_{O_i}$, 其中$\varphi^{-1}_{O_i}$是$\varphi_{O_i}$的逆, 因此它是从$\mathbb{R}^n$的开子集到$O_i\cap O_j$的映射, 而$\varphi_{O_j}$又是从$O_i\cap O_j$到$\mathbb{R}^n$的开子集的映射, 所以复合映射$\varphi_{O_j}\circ \varphi^{-1}_{O_i}$是从$\mathbb{R}^n$的一个开集到另一个开集的映射:
+\begin{equation}\label{eq:Coordinate_Transformation1}
+  \begin{split}
+    \varphi_{O_j}\circ \varphi^{-1}_{O_i}:U_i\subset\mathbb{R}^n\rightarrow U_j\subset\mathbb{R}^n,(x^1,\cdots,x^n)\mapsto (x'^1,\cdots,x'^n).
+  \end{split}
+\end{equation}
+注意到(\ref{eq:Coordinate_Transformation1})相当于“输入$x^\mu$, 输出$x'^1$;$\cdots$;输入$x^\mu$, 输出$x'^n$”, 于是上述复合映射实质上是$n$个函数构成的函数组:
+\begin{equation}\label{eq:Coordinate_Transformation2}
+  \begin{split}
+    x'^\mu=x'^\mu(x^\nu),
+  \end{split}
+\end{equation}
+这个函数组就是我们常说的坐标变换函数组.同理, 我们可以导出复合映射$\varphi_{O_i}\circ \varphi^{-1}_{O_j}$的坐标变换函数组:
+\begin{equation}\label{eq:Coordinate_Transformation3}
+  \begin{split}
+    \varphi_{O_i}\circ \varphi^{-1}_{O_j}:U_j\subset\mathbb{R}^n\rightarrow U_i&\subset\mathbb{R}^n,(x'^1,\cdots,x'^n)\mapsto (x^1,\cdots,x^n);
+  \end{split}
+\end{equation}
+\begin{equation}\label{eq:Coordinate_Transformation4}
+  \begin{split}
+    x^\mu&=x^\mu(x'^\nu).
+  \end{split}
+\end{equation}
+上述两个同胚映射是互逆的, 这是因为$\varphi_{O_j}\circ \varphi^{-1}_{O_i}\circ \varphi_{O_i}\circ \varphi^{-1}_{O_j}=id$.如果坐标变换$x'^\mu=x'^\mu(x^\nu)$和$x^\mu=x^\mu(x'^\nu)$有直到$r\in\mathbb{Z}^+$阶连续的偏导数, 则称这两个坐标系是$C^r$相容的.如果坐标变换有任意阶连续的偏导数, 则称这两个坐标系是$C^\infty$相容的.
+\begin{remark}
+  需要注意的是, 相容性条件对$O_i\cap O_j=\varnothing$或$O_i\cap O_j\neq \varnothing$均成立, 这意味着(\ref{eq:Coordinate_Transformation2})和(\ref{eq:Coordinate_Transformation4})的定义域分别是$U_i$和$U_j$, 值域分别是$U_j$和$U_i$, 而不是$U_i$和$U_j$中互相同胚的那部分开子集.事实上(\ref{eq:Coordinate_Transformation1})和(\ref{eq:Coordinate_Transformation3})也展示了这一点.
+\end{remark}
+
+下面我们给出\textbf{坐标卡册}(Atlas)的定义.
+\begin{definition}
+  设$M$是一个$n$维流形, $\mathcal{A}=\{(O_i,\varphi_{O_i})\}$是数个坐标卡的集合.若$\mathcal{A}$满足
+
+  1)$\{O_i\}$构成$M$的开覆盖, 也即$\bigcup\limits_{i=1}^kO_i=M,k\in\mathbb{Z}^+,k<\infty$;\\
+  2)任意$(O_i,\varphi_{O_i}),(O_j,\varphi_{O_j})\in\mathcal{A}$都是$C^r$相容的;\\
+  3)$\mathcal{A}$是极大的,
+
+  则称$\mathcal{A}$是$M$的一个$C^r$微分结构(同一拓扑流形可以有不同的微分结构).如果在$M$上给定了一个$C^r$微分结构, 则称$M$是一个\textbf{$C^r$微分流形}.
+\end{definition}

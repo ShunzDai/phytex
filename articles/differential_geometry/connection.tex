@@ -6,7 +6,7 @@
 \end{eqnarray}
 这意味着$d\phi$仍是张量丛截面的元素, 用学物理家的话来说也就是$d\phi$仍然满足张量的变换规律.
 
-一个自然的问题是, 对于切矢量场或余切矢量场, 它们的外微分是否仍然是张量丛截面的元素? 但问题就出在这, 外微分算子是一个定义在外形式丛截面上的线性算子, 而切矢量场不是外形式丛截面的元素, 因此我们无法对一个切矢量场求外微分；余切矢量场是外形式丛截面的元素, 而外形式丛只是协变张量丛的子集, 因此我们无法通过外微分运算得到一个非全反对称的高阶协变张量场. 这些引申出的问题意味着我们需要推广外微分算子, 并期望得到一个定义在一般张量丛截面$\varGamma(T_{(p, q)}M)$上的线性微分算子, 使我们能对那些不在外形式丛截面中的张量场进行“微分”运算. 这样构造的线性微分算子被称为\textbf{仿射联络}.
+一个自然的问题是, 对于切矢量场或余切矢量场, 它们的外微分是否仍然是张量丛截面的元素? 但问题就出在这, 外微分算子是一个定义在外形式丛截面上的线性算子, 而切矢量场不是外形式丛截面的元素, 因此我们无法对一个切矢量场求外微分;余切矢量场是外形式丛截面的元素, 而外形式丛只是协变张量丛的子集, 因此我们无法通过外微分运算得到一个非全反对称的高阶协变张量场. 这些引申出的问题意味着我们需要推广外微分算子, 并期望得到一个定义在一般张量丛截面$\varGamma(T_{(p, q)}M)$上的线性微分算子, 使我们能对那些不在外形式丛截面中的张量场进行“微分”运算. 这样构造的线性微分算子被称为\textbf{仿射联络}.
 
 \begin{remark}
   1微分形式$\omega\in \varGamma(\Lambda^{1}(M^{*}))$在局部坐标系改变时满足
@@ -84,29 +84,37 @@ $$d\left(\partial_\mu, dx^\nu\right)=\left(D(\partial_\mu), dx^\nu\right)+\left(
 我们设$D(dx^\nu)={{\omega^*}^\nu}_\rho\otimes{dx}^\rho$, 得到
 $$\left(\partial_\mu, D(dx^\nu)\right)=\left(\partial_\mu, {{\omega^*}^\nu}_\rho\otimes{dx}^\rho\right)={\omega^*}^\nu_\rho\delta^\rho_\mu={{\omega^*}^\nu}_\mu. $$
 考虑到对偶标架满足$\left(\partial_\mu, dx^\nu\right)=\delta^\nu_\mu$, 得到
-\begin{eqnarray}\begin{aligned}
+\begin{eqnarray}
+  \begin{aligned}
     {{\omega^*}^\nu}_\mu&=&\left(\partial_\mu, D(dx^\nu)\right)=-\left(D(\partial_\mu), dx^\nu\right)\\
     &=&-\left({\omega^\rho}_\mu\otimes\partial_\rho, dx^\nu\right)=-{\omega}^\rho_\mu\delta^\nu_\rho=-{\omega}^\nu_\mu,
-\end{aligned}\end{eqnarray}
+  \end{aligned}
+\end{eqnarray}
 即$D(dx^\nu)=-{\omega}^\nu_\rho\otimes{dx}^\rho$.
 
 至此, 我们就能计算任意$A\in \varGamma(T_{(1, 0)}M)$与$B\in \varGamma(T_{(0, 1)}M)$的联络了. 在局部坐标系下, 我们有
-\begin{eqnarray}\begin{aligned}
+\begin{eqnarray}
+  \begin{aligned}
     D(A)&=D(A^\mu\partial_\mu)\\
     &=dA^\mu\otimes\partial_\mu+A^{\mu}D(\partial_\mu)\\
     &=(\partial_{\rho}A^\mu+A^{\nu}{\varGamma^\mu}_{\nu\rho})dx^\rho{\otimes}\partial_\mu\\
     &=\nabla_{\rho}A^{\mu}dx^\rho{\otimes}\partial_\mu;
-\end{aligned}\end{eqnarray}
-\begin{eqnarray}\begin{aligned}
+  \end{aligned}
+\end{eqnarray}
+\begin{eqnarray}
+  \begin{aligned}
     D(B)&=D(B_{\mu}{dx}^\mu)\\
     &=dB_\mu\otimes{dx}^\mu+B_{\mu}D({dx}^\mu)\\
     &=(\partial_{\rho}B_\mu-B_\nu{\varGamma^\nu}_{\mu\rho})dx^\rho{\otimes}dx^\mu\\
     &=\nabla_{\rho}B_{\mu}dx^\rho{\otimes}dx^\mu,
-\end{aligned}\end{eqnarray}
+  \end{aligned}
+\end{eqnarray}
 其中
 \begin{eqnarray}\label{eq:derivative}
-  \nabla_{\rho}A^\mu&=&\partial_{\rho}A^\mu+A^{\nu}{\varGamma^\mu}_{\nu\rho};\\
-  \nabla_{\rho}B_{\mu}&=&\partial_{\rho}B_\mu-B_\nu{\varGamma^\nu}_{\mu\rho},
+  \begin{aligned}
+    \nabla_{\rho}A^\mu&=&\partial_{\rho}A^\mu+A^{\nu}{\varGamma^\mu}_{\nu\rho};\\
+    \nabla_{\rho}B_{\mu}&=&\partial_{\rho}B_\mu-B_\nu{\varGamma^\nu}_{\mu\rho},
+  \end{aligned}
 \end{eqnarray}
 (\ref{eq:derivative})正是通常意义下的\textbf{协变导数}运算. 由此可见, 协变导数是一种依赖于局部坐标系的分量表述. 用类似的方法, 我们能得到$T_{(p, q)}(M)$上的诱导联络.
 
@@ -129,9 +137,11 @@ $$\left(\partial_\mu, D(dx^\nu)\right)=\left(\partial_\mu, {{\omega^*}^\nu}_\rho
     \end{aligned}
   \end{eqnarray}
   其中
-  \begin{eqnarray}\begin{aligned}
+  \begin{eqnarray}
+  \begin{aligned}
       \nabla_{\rho}{S^{\mu_1\dots\mu_p}}_{\nu_1\dots\nu_q}&=\partial_\rho{S^{\mu_1\dots\mu_p}}_{\nu_1\dots\nu_q}\\
       &+{S^{\sigma\dots\mu_p}}_{\nu_1\dots\nu_q}{\varGamma^{\mu_1}}_{\sigma\rho}+\dots+{S^{\mu_1\dots\sigma}}_{\nu_1\dots\nu_q}{\varGamma^{\mu_p}}_{\sigma\rho}\\
       &-{S^{\mu_1\dots\mu_p}}_{\sigma\dots\nu_q}{\varGamma^{\sigma}}_{\nu_1\rho}-\dots-{S^{\mu_1\dots\mu_p}}_{\nu_1\dots\sigma}{\varGamma^{\sigma}}_{\nu_q\rho}.
-  \end{aligned}\end{eqnarray}
+    \end{aligned}
+\end{eqnarray}
 \end{definition}
