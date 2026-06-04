@@ -1,0 +1,255 @@
+  \section{Hamilton力学}\label{sec:hamiltonian}
+		Lagrange力学描述的是位形流形上的力学规律, 是比Newton力学更深刻的分析工具.然而, Lagrange力学也有不足：Euler-Lagrange方程是一个二阶方程, 它在大多数情况下不易求解.如果能想办法让描述力学系统的方程的阶数降下来, 则在求解运动规律时就方便多了.Hamilton力学由此而生.Hamilton力学是辛流形上的力学规律, 其参数为广义坐标$x^\mu$以及广义动量$p_\mu$.Lagrange力学中有Lagrange函数$L(x^\mu;{\dot{x}}^\mu)$, 对应的, Hamilton力学中也有Hamilton函数, 我们将其表示为$H(x^\mu;p_\mu)$.由Hamilton函数逐步搭建的力学体系能提供丰富的信息, 事实上, 由Heisenberg建立的矩阵力学就来源于经典Hamilton力学的量子化.
+	\subsection{Hamilton方程}
+		对Lagrange函数$L(x^\mu;{\dot{x}}^\mu)$变分, 得到
+		\begin{equation}\label{eq:delta L}
+		\delta L=\frac{\partial L}{\partial x^\mu}\delta x^\mu+\frac{\partial L}{\partial {\dot{x}}^\mu}\delta {\dot{x}}^\mu,
+		\end{equation}
+		Lagrange函数具有能量的量纲, 于是Lagrange函数对广义速度的偏导数具有动量的量纲.不妨将这个具有动量量纲的量称为“广义动量”.
+		\begin{definition}
+		广义动量$p_\mu$定义为
+		\begin{equation}
+			p_\mu:=\frac{\partial L}{\partial {\dot{x}}^\mu}.
+		\end{equation}
+		\end{definition}
+		于是(\ref{eq:delta L})可以改写成
+		\begin{equation}\label{eq:delta L'}
+		\delta L=\frac{\partial L}{\partial x^\mu}\delta x^\mu+p_\mu\delta {\dot{x}}^\mu;
+		\end{equation}
+		再根据Euler-Lagrange方程得到
+		\begin{equation*}
+		\frac{\partial L}{\partial x^\mu}=\frac{d}{dt}\frac{\partial L}{\partial {\dot{x}}^\mu}={\dot{p}}_\mu,
+		\end{equation*}
+		所以(\ref{eq:delta L'})变成
+		\begin{equation}\label{eq:delta L''}
+		\delta L={\dot{p}}_\mu\delta x^\mu+p_\mu\delta {\dot{x}}^\mu.
+		\end{equation}
+		为了得到某个以$p_\mu$为变量的变分, 我们对(\ref{eq:delta L''})进行Legendre变换得到
+		\begin{equation*}
+		\delta L={\dot{p}}_\mu\delta x^\mu+\delta(p_\mu{\dot{x}}^\mu)-{\dot{x}}^\mu\delta p_\mu,
+		\end{equation*}
+		移项得到
+		\begin{equation}\label{eq:delta H}
+		\delta(p_\mu{\dot{x}}^\mu-L)=-{\dot{p}}_\mu\delta x^\mu+{\dot{x}}^\mu\delta p_\mu.
+		\end{equation}
+		所以,若
+		\begin{definition}
+		定义Hamilton函数为
+		\begin{equation}
+			H:=p_\mu{\dot{x}}^\mu-L,
+		\end{equation}
+		\end{definition}
+		则$H$就是以$x^\mu$和$p_\mu$为变量的函数.于是我们可以建立如下原理
+		\begin{theorem}
+		Hamilton方程组是指如下两个方程
+		\begin{equation}
+			\begin{split}\label{eq:H}
+				\frac{\partial H}{\partial x^\mu}&=-{\dot{p}}_\mu;\\
+				\frac{\partial H}{\partial p_\mu}&={\dot{x}}^\mu.
+			\end{split}
+		\end{equation}
+		\end{theorem}
+		可见, Hamilton力学研究的是1阶方程, 但方程的数量比Lagrange力学增加了一倍.
+
+	\subsection{Poisson括号}
+		设任意力学量$A$是$x^\mu$与$p_\mu$的函数$A(x^\mu(t);p_\mu(t))$, 我们来研究$A$随时间变化的规律.由于
+		\begin{equation}\label{eq:Poisson}
+		\frac{dA}{dt}=\frac{\partial A}{\partial x^\mu}\frac{d x^\mu}{dt}+\frac{\partial A}{\partial p_\mu}\frac{dp_\mu}{dt},
+		\end{equation}
+		考虑到Hamilton方程(\ref{eq:H}), 带入(\ref{eq:Poisson})得到
+		\begin{equation}\label{eq:Poisson'}
+		\frac{dA}{dt}=\frac{\partial A}{\partial x^\mu}\frac{\partial H}{\partial p_\mu}-\frac{\partial A}{\partial p_\mu}\frac{\partial H}{\partial x^\mu}.
+		\end{equation}
+		(\ref{eq:Poisson'})存在着一种反对称性, 我们可以用一个双线性映射表示之.
+		\begin{definition}
+		以$x^\mu$与$p_\mu$为变量的力学量$X$与$Y$的Poisson括号为
+		\begin{equation}\label{eq:PB}
+			\{X,Y\}:=\frac{\partial X}{\partial x^\mu}\frac{\partial Y}{\partial p_\mu}-\frac{\partial X}{\partial p_\mu}\frac{\partial Y}{\partial x^\mu}.
+		\end{equation}
+		\end{definition}
+		\begin{remark}
+			Poisson括号满足
+			\begin{enumerate}
+				\item 反对称性：$\{X,Y\}=-\{Y,X\}$;
+				\item Jacobi恒等式：$\{\{X,Y\},Z\}+\{\{Z,X\}Y\}+\{\{Y,Z\},X\}=0$.
+			\end{enumerate}
+			事实上Poisson括号构成一个\textbf{Lie代数}.
+		\end{remark}
+
+		(\ref{eq:Poisson'})可用Poisson括号表示为
+		\begin{equation}\label{eq:heq1}
+		\frac{dA}{dt}=\{A,H\}.
+		\end{equation}
+		Hamilton方程也可以修改成Poisson括号的形式
+		\begin{equation}
+		\begin{split}
+			\{p_\mu,H\}&={\dot{p}_\mu};\\
+			\{x^\mu,H\}&={\dot{x}}^\mu,
+		\end{split}
+		\end{equation}
+		而$x^\mu$与$x^\nu$、$p_\mu$与$p_\nu$、$x^\mu$与$p_\nu$的Poisson括号分别为
+		\begin{eqnarray}\label{eq:xxppxp}
+			\{x^\mu,x^\nu\}&=&\frac{\partial x^\mu}{\partial x^\rho}\frac{\partial x^\nu}{\partial p_\rho}-\frac{\partial x^\mu}{\partial p_\rho}\frac{\partial x^\nu}{\partial x^\rho}=0;\\
+			\{p_\mu,p_\nu\}&=&\frac{\partial p_\mu}{\partial x^\rho}\frac{\partial p_\nu}{\partial p_\rho}-\frac{\partial p_\mu}{\partial p_\rho}\frac{\partial p_\nu}{\partial x^\rho}=0;\\
+			\{x^\mu,p_\nu\}&=&\frac{\partial x^\mu}{\partial x^\rho}\frac{\partial p_\nu}{\partial p_\rho}-\frac{\partial x^\mu}{\partial p_\rho}\frac{\partial p_\nu}{\partial x^\rho}=\delta^\mu_\rho\delta^\rho_\nu=\delta^\mu_\nu.
+		\end{eqnarray}
+		作为广义动量的特例, 我们来看看角动量的Poisson括号.
+		角动量即$\overrightarrow{L}=\overrightarrow{r}\times\overrightarrow{p}$, 其分量满足
+		\begin{equation*}
+			L^\rho=\varepsilon^{\rho\mu\nu}x_\mu p_\nu;\\
+			L_\rho=\varepsilon_{\rho\mu\nu}x^\mu p^\nu.
+		\end{equation*}
+		其中$x_\mu\equiv\delta_{\mu\sigma}x^\sigma$, $p^\nu\equiv\delta^{\nu\sigma}p_\sigma$.于是角动量的Poisson括号为
+		\begin{eqnarray*}
+			\{L_\mu,L^\nu\}&=&\frac{\partial L_\mu}{\partial x^\rho}\frac{\partial L^\nu}{\partial p_\rho}-\frac{\partial L_\mu}{\partial p_\rho}\frac{\partial L^\nu}{\partial x^\rho}\\
+			&=&\varepsilon_{\mu\rho\sigma}\varepsilon^{\nu\lambda\rho}p^\sigma x_\lambda-\varepsilon_{\mu\lambda\rho}\varepsilon^{\nu\rho\sigma}x^\lambda p_\sigma\\
+			&=&-\delta^\nu_\mu p^\sigma x_\sigma+p^\nu x_\mu+\delta^\nu_\mu x^\sigma p_\sigma-x^\nu p_\mu\\
+			&=&\delta^\nu_\mu\left(x^\sigma p_\sigma-p^\sigma x_\sigma\right)+p^\nu x_\mu-x^\nu p_\mu\\
+			&=&p^\nu x_\mu-x^\nu p_\mu,
+		\end{eqnarray*}
+		即$\{L_\mu,L_\nu\}=p_\nu x_\mu-x_\nu p_\mu$.注意到
+		$$p_\nu x_\mu-x_\nu p_\mu=\left(\delta^\beta_\nu\delta^\alpha_\mu-\delta^\alpha_\nu\delta^\beta_\mu\right)x_\alpha p_\beta=\varepsilon_{\sigma\mu\nu}\varepsilon^{\sigma\alpha\beta} x_\alpha p_\beta=\varepsilon_{\sigma\mu\nu}L^\sigma,$$
+		于是得到
+		\begin{equation}\label{eq:[L,L]}
+			\{L_\mu,L_\nu\}=\varepsilon_{\sigma\mu\nu}L^\sigma.
+		\end{equation}
+		我们还可以证明：
+
+		定义角动量的平方为$L^2\equiv L_\mu L^\mu$, 则$L^2$与角动量的Poisson括号为
+		\begin{equation}\label{eq:[L^2,L]}
+			\{L^2,L_\mu\}=0.
+		\end{equation}
+
+		回到力学量$A$随时间变化的规律问题上, 我们得到如下引理.
+		\begin{lemma}
+		若力学量$A(x^\mu;p_\mu)$与Hamiltonian的Poisson括号为零, 即
+		\begin{equation}
+			\{A,H\}=0,
+		\end{equation}
+		则物理量$A$是一个\textbf{守恒荷}.
+		\end{lemma}
+		我们举一个例子.
+		\begin{example}
+			求自由粒子的守恒荷.
+
+		设局部坐标下某自由粒子的Lagrangian为
+		$$L=\frac{1}{2}g_{\mu\nu}\dot{x}^\mu\dot{x}^\nu,$$
+		则广义动量
+		\begin{eqnarray*}
+			p_\rho=\frac{\partial L}{\partial {\dot{x}}^\rho}=\frac{1}{2}g_{\mu\nu}\left(\frac{\partial \dot{x}^\mu}{\partial {\dot{x}}^\rho}\dot{x}^\nu+\dot{x}^\mu\frac{\partial \dot{x}^\nu}{\partial {\dot{x}}^\rho}\right)=\frac{1}{2}g_{\mu\nu}\left(\delta^\mu_\rho\dot{x}^\nu+\dot{x}^\mu\delta^\nu_\rho\right)=g_{\rho\mu}\dot{x}^\mu.
+		\end{eqnarray*}
+		因此$\dot{x}^\mu\equiv g^{\mu\nu}p_\nu$, 于是Hamiltonian为
+		\begin{eqnarray*}
+			H=p_\mu{\dot{x}}^\mu-L=g^{\mu\nu}p_\mu p_\nu-\frac{1}{2}g^{\mu\nu}p_\mu p_\nu=\frac{1}{2}g^{\mu\nu}p_\mu p_\nu,
+		\end{eqnarray*}
+		用Poisson括号可得
+		\begin{eqnarray*}
+			\{p_\mu,H\}=0;\\
+			\{H,H\}=0.
+		\end{eqnarray*}
+		所以此时广义动量和Hamiltonian守恒.
+		\end{example}
+
+
+	\subsection{Noether定理}
+		\begin{theorem}
+		设$\epsilon$是一个无穷小量.若无穷小坐标变换$x^\mu\rightarrow x'^\mu=x^\mu+\epsilon f^\mu(x)$保持Hamiltonian不变, 则$Q\equiv p_\mu f^\mu(x)$是一个守恒荷.
+		\end{theorem}
+		\begin{proof}
+		要证$Q$是守恒荷, 即证$\dot{Q}$为零:
+		\begin{equation*}
+			\begin{split}
+				\dot{Q}&\equiv\frac{dQ}{dt}=\{Q,H\}\\
+				&=\frac{\partial Q}{\partial x^\rho}\frac{\partial H}{\partial p_\rho}-\frac{\partial H}{\partial x^\rho}\frac{\partial Q}{\partial p_\rho}\\
+				&=p_\mu \frac{\partial f^\mu}{\partial x^\rho}\frac{\partial H}{\partial p_\rho}-f^\rho\frac{\partial H}{\partial x^\rho}.
+			\end{split}
+		\end{equation*}
+		下面来计算Hamiltonian的变分.由于坐标变换保持Hamiltonian不变, 则有$\delta H=0$, 于是
+		\begin{equation}\label{pr:delta H}
+			0=\delta H=\frac{\partial H}{\partial x^\mu}\delta x^\mu+\frac{\partial H}{\partial p_\mu}\delta p_\mu,
+		\end{equation}
+		其中$\delta x^\mu$可直接由坐标变换得到：
+		\begin{equation}\label{pr:delta x}
+			\begin{split}
+				x^\mu\rightarrow x'^\mu&=x^\mu+\epsilon f^\mu(x)\\
+				\Rightarrow\delta x^\mu&=\epsilon f^\mu(x);
+			\end{split}
+		\end{equation}
+		$\delta p_\mu$要从广义动量的定义出发得到：
+		\begin{eqnarray*}
+			&&p_\mu=\frac{\partial L}{\partial \dot{x}^\mu}\\
+			\Rightarrow &&p'_\mu=\frac{\partial L}{\partial \dot{x}'^\mu}=\frac{\partial L}{\partial \dot{x}^\nu}\frac{\partial \dot{x}^\nu}{\partial \dot{x}'^\mu}=p_\nu\frac{\partial \dot{x}^\nu}{\partial \dot{x}'^\mu},
+		\end{eqnarray*}
+		由坐标变换可推得
+		\begin{eqnarray*}
+			&&x'^\mu=x^\mu+\epsilon f^\mu(x)\\
+			\Rightarrow&&\dot{x}'^\mu=\dot{x}^\mu+\epsilon \frac{\partial f^\mu}{\partial x^\rho}\dot{x}^\rho\\
+			\Rightarrow&&\frac{\partial \dot{x}'^\mu}{\partial \dot{x}^\nu}=\delta^\mu_\nu+\epsilon \frac{\partial f^\mu}{\partial x^\rho}\delta^\rho_\nu=\delta^\mu_\nu+\epsilon \frac{\partial f^\mu}{\partial x^\nu}\\
+			\Rightarrow&&\frac{\partial \dot{x}^\nu}{\partial \dot{x}'^\mu}=\delta^\nu_\mu-\epsilon \frac{\partial f^\nu}{\partial x^\mu},
+		\end{eqnarray*}
+		其中最后一步可用反证法证明
+		\begin{eqnarray*}
+			\frac{\partial \dot{x}'^\mu}{\partial \dot{x}^\nu}\frac{\partial \dot{x}^\nu}{\partial \dot{x}'^\rho}=\left(\delta^\mu_\nu+\epsilon \frac{\partial f^\mu}{\partial x^\nu}\right)\left(\delta^\nu_\mu-\epsilon \frac{\partial f^\nu}{\partial x^\mu}\right)=\delta^\mu_\rho+O(\epsilon^2),
+		\end{eqnarray*}
+		省略高阶无穷小只剩单位矩阵, 说明左侧两个矩阵确实是互逆的.但我们尚未证明逆矩阵的唯一性, 为此, 我们假设
+		\begin{eqnarray*}
+			\frac{\partial \dot{x}^\nu}{\partial \dot{x}'^\mu}=\delta^\nu_\mu+\epsilon h^\nu_\mu,
+		\end{eqnarray*}
+		其中$h^\nu_\mu$是以坐标为变量的函数.于是
+		\begin{eqnarray*}
+			\delta^\mu_\rho&&=\frac{\partial \dot{x}'^\mu}{\partial \dot{x}^\nu}\frac{\partial \dot{x}^\nu}{\partial \dot{x}'^\rho}\\
+			&&=\left(\delta^\mu_\nu+\epsilon \frac{\partial f^\mu}{\partial x^\nu}\right)\left(\delta^\nu_\rho+\epsilon h^\nu_\rho\right)\\
+			&&=\delta^\mu_\rho+\epsilon\left(\frac{\partial f^\mu}{\partial x^\rho}+h^\mu_\rho\right)+O(\epsilon^2)\\
+			&&\Rightarrow\epsilon\left(\frac{\partial f^\mu}{\partial x^\rho}+h^\mu_\rho\right)=0,
+		\end{eqnarray*}
+		要使上式对于任意无穷小量$\epsilon$都成立, 唯有
+		\begin{eqnarray*}
+			h^\mu_\rho=-\frac{\partial f^\mu}{\partial x^\rho},
+		\end{eqnarray*}
+		这样就证明了解的唯一性.所以
+		\begin{equation}\label{pr:delta p}
+		\begin{split}
+			p'_\mu&=p_\nu\frac{\partial \dot{x}^\nu}{\partial \dot{x}'^\mu}=p_\nu\left(\delta^\nu_\mu-\epsilon \frac{\partial f^\nu}{\partial x^\mu}\right)\\
+			&=p_\mu-\epsilon p_\nu\frac{\partial f^\nu}{\partial x^\mu}\\
+			\Rightarrow\delta p_\mu&=-\epsilon p_\nu\frac{\partial f^\nu}{\partial x^\mu}
+		\end{split}
+		\end{equation}
+		将(\ref{pr:delta x})和(\ref{pr:delta p})带入(\ref{pr:delta H})得到
+		\begin{equation}\label{pr:delta H'}
+		\begin{split}
+			0=\delta H&=-\epsilon\left[p_\nu\frac{\partial f^\nu}{\partial x^\mu}\frac{\partial H}{\partial p_\mu}-f^\mu\frac{\partial H}{\partial x^\mu}\right]=-\epsilon\dot{Q}.
+		\end{split}
+		\end{equation}
+		要使(\ref{pr:delta H'})对于任意的无穷小量$\epsilon$都成立, 唯有$\dot{Q}=0$, 得证.\\
+		\end{proof}
+
+		\begin{theorem}
+		守恒荷$Q$是无穷小坐标变换的生成元.
+		\end{theorem}
+
+		力学量$A(x^\mu;p_\mu)$的变分为
+		\begin{eqnarray*}
+		\delta A=\frac{\partial A}{\partial x^\mu}\delta x^\mu+\frac{\partial A}{\partial p_\mu}\delta p_\mu,
+		\end{eqnarray*}
+		从上面对守恒荷的证明可知, $\delta x^\mu$和$\delta p_\mu$能够借助守恒荷$Q$表述为
+
+		\begin{equation}\label{eq:generator}
+			\begin{split}
+				\delta x^\mu&=\epsilon f^\mu=\epsilon\{x^\mu,Q\};\\
+				\delta p_\mu&=-\epsilon p_\nu\frac{\partial f^\nu}{\partial x^\mu}=\epsilon\{p_\mu,Q\}.
+			\end{split}
+		\end{equation}
+
+		(\ref{eq:generator})请读者自行证明.因此$\delta A$可以进一步写成
+		\begin{eqnarray*}
+		\delta A=\epsilon\left(\frac{\partial A}{\partial x^\mu}\{x^\mu,Q\}+\frac{\partial A}{\partial p_\mu}\{p_\mu,Q\}\right).
+		\end{eqnarray*}
+		在经典情形下, 生成元构造尚不明显.但在Poisson括号量子化后, 可以非常明显的展示出生成元构造.例如
+		\begin{eqnarray*}
+		x^\mu\rightarrow x'^\mu&&=x^\mu+\delta x^\mu\\
+		&&=x^\mu+\epsilon[x^\mu,Q]\\
+		&&=x^\mu-\epsilon Qx^\mu+\epsilon x^\mu Q\\
+		&&=\left(1-\epsilon Q\right)x^\mu\left(1+\epsilon Q\right)\\
+		&&=e^{-\epsilon Q}x^\mu e^{\epsilon Q},
+		\end{eqnarray*}
+		其中第四个等号省略了$O(\epsilon^2)$.

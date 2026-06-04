@@ -1,0 +1,176 @@
+\section{引力场方程的精确解}\label{sec:exact solutions}
+	\subsection{真空静态球对称时空的引力场方程}
+        Einstein引力场方程是一个二阶张量方程，在$c=1$的自然单位制下，其形式为
+        \begin{equation}
+            R_{\mu\nu}-\frac{1}{2}Rg_{\mu\nu}+\Lambda g_{\mu\nu}=8\pi GT_{\mu\nu}
+        \end{equation}
+        其中$R_{\mu\nu}$为Ricci张量，$R$为Ricci标量，$g_{\mu\nu}$为时空度规，$\Lambda$为宇宙学常数，$T_{\mu\nu}$为应力-能量张量(Stress-energy tensor)，$G$为万有引力常数.以下内容在不另外说明的情况下，使用的均是$c=1$的自然单位制.\\
+        若用$g^{\mu\nu}$对$(1)$的两个协变指标缩并，可以得到一个标量方程
+        \begin{equation}
+            -R+4\Lambda=8\pi GT
+        \end{equation}
+        其中$T$是$T_{\mu\nu}$的迹.将$(2)$代入$(1)$消去Ricci标量，可以得到引力场方程的一个等效形式
+        \begin{equation}
+            R_{\mu\nu}-\Lambda g_{\mu\nu}=8\pi G(T_{\mu\nu}-\frac{1}{2}Tg_{\mu\nu})
+        \end{equation}
+        对于真空，能量-应力张量及其迹均为零.于是显而易见的，此时引力场方程为
+        \begin{equation}
+            R_{\mu\nu}=\Lambda g_{\mu\nu}
+        \end{equation}
+
+
+
+        由对称性可知，静态球对称度规形式为
+        \begin{equation}
+            g_{\mu\nu}=diag\left(-A(r),B(r),r^2,r^2\sin\theta\right)
+        \end{equation}
+        其中$A$和$B$是两个只与半径$r$相关的函数.假设时空坐标的仿射参量为$\tau$，利用$g_{\mu\nu}$构造如下拉氏量
+        \begin{equation}
+            L=\frac{1}{2}g_{\mu\nu}\dot{x}^\mu\dot{x}^\nu=-A(r)\dot{t}^2+B(r)\dot{r}^2+r^2\dot{\theta}^2+r^2\sin\theta\dot{\varphi}^2
+        \end{equation}
+        其中$\dot{x}^\mu\equiv dx/d\tau$.
+        将$L$代入Euler-Lagrange方程
+        \begin{equation}
+            \frac{\partial L}{\partial x^\mu}-\frac{d}{d\tau}\frac{\partial L}{\partial \dot{x}^\mu}=0
+        \end{equation}
+        可以得到四个方程
+        \begin{eqnarray*}
+            \ddot{t}+\frac{A'}{A}\dot{t}\dot{r}=0\\
+            \ddot{r}+\frac{A'}{2B}\dot{t}^2+\frac{B'}{2B}\dot{r}^2-\frac{r}{B}\dot{\theta}^2-\frac{r\sin^2\theta}{B}\dot{\varphi}^2=0\\
+            \ddot{\theta}+\frac{2}{r}\dot{r}\dot{\theta}-\sin\theta \cos\theta\dot{\varphi}^2=0\\
+            \ddot{\varphi}+\frac{2\cos\theta}{\sin\theta}\dot{\theta}\dot{\varphi}+\frac{2}{r}\dot{r}\dot{\varphi}=0
+        \end{eqnarray*}
+        又知测地线方程为
+        \begin{equation}
+            \ddot{x}^\rho+\varGamma^\rho_{\mu\nu}\dot{x}^\mu\dot{x}^\nu=0
+        \end{equation}
+        将这四个等式与测地线方程作对比，容易看出，静态球对称时空的非零Christoffel符号分别为
+        \begin{equation}
+            \begin{split}
+                    {\varGamma^0}_{10}&={\varGamma^0}_{01}=\frac{A'}{2A}\\
+                    {\varGamma^1}_{00}&=\frac{A'}{2B};{\varGamma^1}_{11}=\frac{B'}{2B};{\varGamma^1}_{22}=-\frac{r}{B};{\varGamma^1}_{33}=-\frac{r\sin^2\theta}{B}\\
+                    {\varGamma^2}_{12}&={\varGamma^2}_{21}=\frac{1}{r};{\varGamma^2}_{33}=-\sin\theta \cos\theta\\
+                    {\varGamma^3}_{23}&={\varGamma^3}_{32}=\frac{\cos\theta}{\sin\theta};{\varGamma^3}_{13}=\varGamma^3_{31}=\frac{1}{r}
+            \end{split}
+        \end{equation}
+
+        Riemann曲率张量为
+        \begin{equation}
+            {R_{\mu\rho\nu}}^\sigma=-\partial_\mu{\varGamma^\sigma}_{\rho\nu}+\partial_\rho{\varGamma^\sigma}_{\mu\nu}-{\varGamma^\lambda}_{\nu\rho}{\varGamma^\sigma}_{\mu\lambda}+{\varGamma^\lambda}_{\mu\nu}{\varGamma^\sigma}_{\rho\lambda}
+        \end{equation}
+        对$\rho\sigma$指标缩并,得到Ricci张量为
+        \begin{equation}
+            R_{\mu\nu}={R_{\mu\rho\nu}}^\rho=-\partial_\mu{\varGamma^\rho}_{\rho\nu}+\partial_\rho{\varGamma^\rho}_{\mu\nu}-{\varGamma^\lambda}_{\nu\rho}\varGamma^\rho_{\mu\lambda}+{\varGamma^\lambda}_{\mu\nu}{\varGamma^\rho}_{\rho\lambda}
+        \end{equation}
+        缩并Christoffel符号可以化简为
+        \begin{equation}
+            {\varGamma^\rho}_{\rho\nu}=\partial_\nu \ln \sqrt{|g|}
+        \end{equation}
+        其中$g$为度规的行列式，可以算得
+        \begin{equation}
+            \ln \sqrt{|g|}=\ln (ABr^4\sin^2\theta)^\frac{1}{2}=\frac{1}{2}\ln A+\frac{1}{2}\ln B+2\ln r+\ln (\sin\theta)
+        \end{equation}
+        将其代入Ricci张量中就得到
+        \begin{equation}
+            \begin{split}
+                    R_{\mu\nu}&=-\partial_\mu\partial_\nu \ln \sqrt{|g|}+{\varGamma^\lambda}_{\mu\nu}\partial_\lambda \ln \sqrt{|g|}+\partial_\rho{\varGamma^\rho}_{\mu\nu}-{\varGamma^\lambda}_{\nu\rho}{\varGamma^\rho}_{\mu\lambda}\\
+                    &=-\partial_\mu\partial_\nu \left[\frac{1}{2}\ln A+\frac{1}{2}\ln B+2\ln r+\ln (\sin\theta)\right]\\
+                    &+{\varGamma^\lambda}_{\mu\nu}\partial_\lambda \left[\frac{1}{2}\ln A+\frac{1}{2}\ln B+2\ln r+\ln (\sin\theta)\right]\\
+                    &+\partial_\rho{\varGamma^\rho}_{\mu\nu}-{\varGamma^\lambda}_{\nu\rho}{\varGamma^\rho}_{\mu\lambda}
+            \end{split}
+        \end{equation}
+        计算可知，Ricci张量的非零元素全部在对角线上
+        \begin{equation}
+            \begin{split}
+                    R_{00}&=\frac{A''}{2B}-\frac{A'B'}{4B^2}-\frac{(A')^2}{4AB}+\frac{A'}{rB}\\
+                    R_{11}&=-\frac{A''}{2A}+\frac{A'B'}{4AB}+\frac{(A')^2}{4A^2}+\frac{B'}{rB}\\
+                    R_{22}&=1-\frac{1}{B}-\frac{rA'}{2AB}+\frac{rB'}{2B^2}\\
+                    R_{33}&=\sin^2\theta-\frac{\sin^2\theta}{B}-\frac{r\sin^2\theta A'}{2AB}+\frac{r\sin^2\theta B'}{2B^2}=\sin^2\theta R_{22}
+            \end{split}
+        \end{equation}
+        综上所述，联立$(4)(5)(15)$，可以得到真空静态球对称时空的相互独立的场方程为
+        \begin{eqnarray}
+            R_{00}&=&\frac{A''}{2B}-\frac{A'B'}{4B^2}-\frac{(A')^2}{4AB}+\frac{A'}{rB}=-\Lambda A\\
+            R_{11}&=&-\frac{A''}{2A}+\frac{A'B'}{4AB}+\frac{(A')^2}{4A^2}+\frac{B'}{rB}=\Lambda B\\
+            R_{22}&=&1-\frac{1}{B}-\frac{rA'}{2AB}+\frac{rB'}{2B^2}=\Lambda r^2
+        \end{eqnarray}
+        其中缺少了$R_{33}$分量的方程，这是因为$R_{33}$分量列出的方程是一个冗余的方程.\\
+
+
+        下面分$\Lambda=0$及$\Lambda\ne0$两种情况分别说明场方程解的具体形式.
+        \subsubsection{Schwarzschild解}
+        $\Lambda=0$对应的场方程为
+        \begin{eqnarray}
+            R_{00}&=&\frac{A''}{2B}-\frac{A'B'}{4B^2}-\frac{(A')^2}{4AB}+\frac{A'}{rB}=0\\
+            R_{11}&=&-\frac{A''}{2A}+\frac{A'B'}{4AB}+\frac{(A')^2}{4A^2}+\frac{B'}{rB}=0\\
+            R_{22}&=&1-\frac{1}{B}-\frac{rA'}{2AB}+\frac{rB'}{2B^2}=0
+        \end{eqnarray}
+        用$B$乘以$(19)$，$A$乘以$(20)$，算得
+        \begin{equation}
+            BR_{00}+AR_{11}=\frac{A'B+AB'}{B}=\frac{(AB)'}{B}=0
+        \end{equation}
+        积分得到
+        \begin{equation}
+            AB=k_1
+        \end{equation}
+        其中$k_1\in R$是积分常数.将$(23)$代入$(21)$，得到
+        \begin{equation}
+            k_1=A+rA'=(rA)'
+        \end{equation}
+        积分得到
+        \begin{equation}
+            A=k_1+\frac{k_2}{r}
+        \end{equation}
+        其中$k_2\in R$是积分常数.将$(25)$带回$(23)$得到
+        \begin{equation}
+            B=\frac{k_1}{k_1+\frac{k_2}{r}}
+        \end{equation}
+        时空线元即
+        \begin{equation}
+            ds^2=-\left(k_1+\frac{k_2}{r}\right)dt^2+\frac{k_1}{k_1+\frac{k_2}{r}}dr^2+r^2d\theta^2+r^2\sin^2\theta d\varphi^2
+        \end{equation}
+        观察$27$可知，这一线元对应的时空在无穷远处应渐近平直
+        \begin{equation}
+            {\lim_{r \to \infty}A}={\lim_{r \to \infty}B}=1
+        \end{equation}
+        因此可得积分常数$k_1=1$.另一个积分常数$k_2$可由测地线方程的弱场近似求得，其值为$-2GM$，其中$M$为引力源的质量.这样，便求得度规为
+        \begin{equation}
+            ds^2=-\left(1-\frac{2GM}{r}\right)dt^2+\frac{1}{1-\frac{2GM}{r}}dr^2+r^2d\theta^2+r^2\sin^2\theta d\varphi^2
+        \end{equation}
+        这一解是Karl Schwarzschild率先得到的，因此又被称为Schwarzschild解.
+
+
+
+        \subsubsection{Schwarzschild-de Sitter解}
+
+
+
+        $\Lambda\ne0$对应的场方程就是$(16)(17)(18)$本身.使用Schwarzschild解中同样的方法，用$B$乘以$(16)$，$A$乘以$(17)$，算得
+        \begin{equation}
+            BR_{00}+AR_{11}=\frac{A'B+AB'}{B}=\frac{(AB)'}{B}=0
+        \end{equation}
+        积分得到
+        \begin{equation}
+            AB=k_3
+        \end{equation}
+        其中$k_3\in R$是积分常数.将$(31)$代入$(18)$，得到
+        \begin{equation}
+            k_3=A+rA'+\Lambda r^2=(rA)'+\Lambda r^2
+        \end{equation}
+        积分得到
+        \begin{equation}
+            A=k_3+\frac{k_4}{r}-\frac{\Lambda}{3}r^2
+        \end{equation}
+        其中$k_4\in R$是积分常数.将$(33)$带回$(31)$得到
+        \begin{equation}
+            B=\frac{k_3}{k_3+\frac{k_4}{r}-\frac{\Lambda}{3}r^2}
+        \end{equation}
+        时空线元即
+        \begin{equation}
+            ds^2=-\left(k_3+\frac{k_4}{r}-\frac{\Lambda}{3}r^2\right)dt^2+\frac{k_3}{k_3+\frac{k_4}{r}-\frac{\Lambda}{3}r^2}dr^2+r^2d\theta^2+r^2\sin^2\theta d\varphi^2
+        \end{equation}
+        考虑到$\Lambda=0$时这一线元应退化到Schwarzschild度规，于是有$k_3=k_1=1,k_4=k_2=-2GM$.这样，便求得度规为
+        \begin{equation}
+            ds^2=-\left(1-\frac{2GM}{r}-\frac{\Lambda}{3}r^2\right)dt^2+\frac{1}{1-\frac{2GM}{r}-\frac{\Lambda}{3}r^2}dr^2+r^2d\theta^2+r^2\sin^2\theta d\varphi^2
+        \end{equation}
+        这一度规构造的时空称为Schwarzschild-de Sitter时空.

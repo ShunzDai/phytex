@@ -1,0 +1,95 @@
+\section{引力场方程}\label{sec:field equation}
+
+\subsection{Einstein-Hilbert作用量}
+\begin{definition}
+    时空与物质场相互作用的作用量是
+    \begin{eqnarray}\label{eq:EH Action}
+        S_{EH}=\int_M\left(\frac{1}{2\kappa}R+\mathcal{L} _{Matter}\right)\epsilon,
+    \end{eqnarray}
+    其中$\kappa=8\pi G/c^4$，$R$为Ricci标量，$\mathcal{L} _{Matter}$是物质场的Lagrangian密度，$\epsilon$是体元(Levi-Civita张量).
+\end{definition}
+我们通常将(\ref{eq:EH Action})称为\textbf{Einstein-Hilbert作用量}.对它变分，我们就得到了物质在时空中的运动方程.
+\begin{theorem}
+    (\ref{eq:EH Action})满足的Euler-Lagrange方程为
+    \begin{eqnarray}\label{eq:Field Equation}
+        R_{\mu\nu}-\frac{1}{2}g_{\mu\nu}R=\kappa T_{\mu\nu}.
+    \end{eqnarray}
+\end{theorem}
+我们通常将(\ref{eq:Field Equation})称为\textbf{引力场方程}.下面，我们来证明(\ref{eq:Field Equation}).
+\begin{proof}
+    我们最终要将度规场作为引力效应的基本场，从而得到一个关于度规的场方程.因此，我们将对度规进行变分.在局部坐标系下，$\epsilon=\sqrt{-g}\varepsilon$.于是
+    \begin{equation}
+        \begin{split}\label{eq:delta EHA}
+            \delta S_{EH}&=\int_M\delta\left(\frac{1}{2\kappa}\sqrt{-g}R+\sqrt{-g}\mathcal{L} _{Matter}\right)\varepsilon\\
+            &=\int_M\left[\frac{1}{2\kappa}\frac{\delta\left(\sqrt{-g}R\right)}{\delta g^{\mu\nu}}+\frac{\delta\left(\sqrt{-g}\mathcal{L} _{Matter}\right)}{\delta g^{\mu\nu}}\right]\delta g^{\mu\nu}\varepsilon\\
+            &=\int_M\left[\frac{1}{2\kappa}\left(\frac{\delta R}{\delta g^{\mu\nu}}+\frac{1}{\sqrt{-g}}\frac{\delta\sqrt{-g}}{\delta g^{\mu\nu}}R\right)+\frac{1}{\sqrt{-g}}\frac{\delta\left(\sqrt{-g}\mathcal{L} _{Matter}\right)}{\delta g^{\mu\nu}}\right]\delta g^{\mu\nu}\epsilon.
+        \end{split}
+    \end{equation}
+    %要使上式成立，唯有
+    %$$\frac{1}{2\kappa}\left(\frac{\delta R}{\delta g^{\mu\nu}}+\frac{1}{\sqrt{-g}}\frac{\delta\sqrt{-g}}{\delta g^{\mu\nu}}R\right)+\frac{\delta\left(\sqrt{-g}\mathcal{L} _{Matter}\right)}{\delta g^{\mu\nu}}\equiv0,$$
+    %即
+    %$$\frac{\delta R}{\delta g^{\mu\nu}}+\frac{1}{\sqrt{-g}}\frac{\delta\sqrt{-g}}{\delta g^{\mu\nu}}R=-2\kappa\frac{\delta\left(\sqrt{-g}\mathcal{L} _{Matter}\right)}{\delta g^{\mu\nu}}.$$
+    (\ref{eq:delta EHA})最后一行的中括号里一共有三项，我们先来看$\delta R/\delta g^{\mu\nu}$这一项.考虑到$R=g^{\mu\nu}R_{\mu\nu}$，于是有
+    $$\frac{\delta R}{\delta g^{\mu\nu}}=\frac{\delta }{\delta g^{\mu\nu}}\left(g^{\alpha\beta}{R}_{\alpha\beta}\right)=\frac{\delta g^{\alpha\beta}}{\delta g^{\mu\nu}}{R}_{\alpha\beta}+g^{\alpha\beta}\frac{\delta {R}_{\alpha\beta}}{\delta g^{\mu\nu}}={R}_{\mu\nu}+g^{\alpha\beta}\frac{\delta {R}_{\alpha\beta}}{\delta g^{\mu\nu}},$$
+    其中用到了${\delta g^{\alpha\beta}}/{\delta g^{\mu\nu}}=\delta^\alpha_\mu\delta^\beta_\nu$.我们晓得Riemannian曲率可由Levi-Civita联络展开，对应的，Ricci曲率与Levi-Civita联络应满足
+    $${R}_{\alpha\beta}={R^\rho}_{\alpha\rho\beta}=\partial_\rho{\varGamma^\rho}_{\alpha\beta}-\partial_\beta{\varGamma^\rho}_{\alpha\rho}+{\varGamma^\rho}_{\sigma\rho}{\varGamma^\sigma}_{\alpha\beta}-{\varGamma^\rho}_{\sigma\beta}{\varGamma^\sigma}_{\alpha\rho}.$$
+    所以Ricci曲率的变分
+    \begin{eqnarray*}
+        \delta{R}_{\alpha\beta}&=&\partial_\rho\delta{\varGamma^\rho}_{\alpha\beta}-\partial_\beta\delta{\varGamma^\rho}_{\alpha\rho}+\delta{\varGamma^\rho}_{\sigma\rho}{\varGamma^\sigma}_{\alpha\beta}+{\varGamma^\rho}_{\sigma\rho}\delta{\varGamma^\sigma}_{\alpha\beta}-\delta{\varGamma^\rho}_{\sigma\beta}{\varGamma^\sigma}_{\alpha\rho}-{\varGamma^\rho}_{\sigma\beta}\delta{\varGamma^\sigma}_{\alpha\rho}\\
+        &=&\left(\partial_\rho\delta{\varGamma^\rho}_{\alpha\beta}+{\varGamma^\rho}_{\sigma\rho}\delta{\varGamma^\sigma}_{\alpha\beta}-\delta{\varGamma^\rho}_{\sigma\beta}{\varGamma^\sigma}_{\alpha\rho}\right)\\
+        &-&\left(\partial_\beta\delta{\varGamma^\rho}_{\alpha\rho}+{\varGamma^\rho}_{\sigma\beta}\delta{\varGamma^\sigma}_{\alpha\rho}-\delta{\varGamma^\rho}_{\sigma\rho}{\varGamma^\sigma}_{\alpha\beta}\right)\\
+        &=&\left(\partial_\rho\delta{\varGamma^\rho}_{\alpha\beta}+{\varGamma^\rho}_{\sigma\rho}\delta{\varGamma^\sigma}_{\alpha\beta}-\delta{\varGamma^\rho}_{\sigma\beta}{\varGamma^\sigma}_{\alpha\rho}-\delta{\varGamma^\rho}_{\alpha\sigma}{\varGamma^\sigma}_{\beta\rho}\right)\\
+        &-&\left(\partial_\beta\delta{\varGamma^\rho}_{\alpha\rho}+{\varGamma^\rho}_{\sigma\beta}\delta{\varGamma^\sigma}_{\alpha\rho}-\delta{\varGamma^\rho}_{\sigma\rho}{\varGamma^\sigma}_{\alpha\beta}-\delta{\varGamma^\rho}_{\alpha\sigma}{\varGamma^\sigma}_{\rho\beta}\right)\\
+        &=&\nabla_\rho\delta{\varGamma^\rho}_{\alpha\beta}-\nabla_\beta\delta{\varGamma^\rho}_{\alpha\rho}.
+    \end{eqnarray*}
+    其中用到了Levi-Civita联络的无挠性.由此我们得到
+    \begin{eqnarray*}
+        g^{\alpha\beta}\delta{R}_{\alpha\beta}=g^{\alpha\beta}\left(\nabla_\rho\delta{\varGamma^\rho}_{\alpha\beta}-\nabla_\beta\delta{\varGamma^\rho}_{\alpha\rho}\right)=\nabla_\rho\left(g^{\alpha\beta}\delta{\varGamma^\rho}_{\alpha\beta}-g^{\alpha\rho}\delta{\varGamma^\beta}_{\alpha\beta}\right).
+    \end{eqnarray*}
+    于是
+    \begin{eqnarray}\label{eq:delta EHA 1}
+        \frac{1}{2\kappa}\int_M\frac{\delta R}{\delta g^{\mu\nu}}\delta g^{\mu\nu}\epsilon&=&\frac{1}{2\kappa}\int_M\left({R}_{\mu\nu}+g^{\alpha\beta}\frac{\delta {R}_{\alpha\beta}}{\delta g^{\mu\nu}}\right)\delta g^{\mu\nu}\epsilon\notag\\
+        &=&\frac{1}{2\kappa}\int_M{R}_{\mu\nu}\delta g^{\mu\nu}\epsilon+\frac{1}{2\kappa}\int_M g^{\alpha\beta}\delta {R}_{\alpha\beta}\epsilon\notag\\
+        &=&\frac{1}{2\kappa}\int_M{R}_{\mu\nu}\delta g^{\mu\nu}\epsilon+\frac{1}{2\kappa}\int_M\nabla_\rho\left(g^{\alpha\beta}\delta{\varGamma^\rho}_{\alpha\beta}-g^{\alpha\rho}\delta{\varGamma^\beta}_{\alpha\beta}\right)\epsilon\notag\\
+        &=&\frac{1}{2\kappa}\int_M{R}_{\mu\nu}\delta g^{\mu\nu}\epsilon.
+    \end{eqnarray}
+    其中最后一步用到了Stokes定理，即
+    \begin{eqnarray*}
+        \frac{1}{2\kappa}\int_M\nabla_\rho\left(g^{\alpha\beta}\delta{\varGamma^\rho}_{\alpha\beta}-g^{\alpha\rho}\delta{\varGamma^\beta}_{\alpha\beta}\right)\epsilon=\frac{1}{2\kappa}\int_{\partial M}\left(g^{\alpha\beta}\delta{\varGamma^\rho}_{\alpha\beta}-g^{\alpha\rho}\delta{\varGamma^\beta}_{\alpha\beta}\right)\epsilon_{\partial M}=0,
+    \end{eqnarray*}
+    记号$\epsilon_{\partial M}$指的是$\partial M$上的体元.
+
+    再来看(\ref{eq:delta EHA})的第二项.记度规矩阵$(g_{\mu\nu})$的伴随矩阵为$(A^{\mu\nu})$，则$(g_{\mu\nu})$的行列式$g$满足$g\delta_\sigma^\alpha=g_{\sigma\beta}A^{\beta\alpha}$.因此
+    $$\frac{\delta \left(g\delta_\sigma^\alpha\right)}{\delta g_{\sigma\beta}}=A^{\beta\alpha}\Rightarrow\frac{\delta g}{\delta g_{\alpha\beta}}=A^{\beta\alpha}\Rightarrow\frac{1}{g}\frac{\delta g}{\delta g_{\alpha\beta}}=\frac{1}{g}A^{\beta\alpha}=g^{\alpha\beta},$$
+    其中最后一步用到了逆矩阵的定义.同理我们可以得到
+    $$\frac{1}{g}\frac{\delta g}{\delta g^{\mu\nu}}=g_{\alpha\mu}g_{\beta\nu}\frac{1}{g}\frac{\delta g}{\delta g_{\alpha\beta}}=g_{\mu\nu}.$$
+    于是
+    \begin{eqnarray}\label{eq:delta EHA 2}
+        \frac{1}{2\kappa}\int_M\left(\frac{1}{\sqrt{-g}}\frac{\delta\sqrt{-g}}{\delta g^{\mu\nu}}R\right)\delta g^{\mu\nu}\epsilon&=&\frac{1}{2\kappa}\int_M\left(-\frac{1}{2g}\frac{\delta g}{\delta g^{\mu\nu}}R\right)\delta g^{\mu\nu}\epsilon\notag\\
+        &=&\frac{1}{2\kappa}\int_M\left(-\frac{1}{2}g_{\mu\nu}R\right)\delta g^{\mu\nu}\epsilon.
+    \end{eqnarray}
+    最后，我们来看(\ref{eq:delta EHA})的第三项.事实上我们对物质场的认识很少，这才将物质场的Lagrangian密度笼统的写成$\mathcal{L}_{Metter}$.因此，我们直接命第三项为物质场的能量动量张量$T_{\mu\nu}$，即
+    $$T_{\mu\nu}:=\frac{-2}{\sqrt{-g}}\frac{\delta\left(\sqrt{-g}\mathcal{L} _{Matter}\right)}{\delta g^{\mu\nu}},$$
+    于是
+    \begin{eqnarray}\label{eq:delta EHA 3}
+        \int_M\left[\frac{\delta\left(\sqrt{-g}\mathcal{L}_{Matter}\right)}{\delta g^{\mu\nu}}\right]\delta g^{\mu\nu}\epsilon=-\frac{1}{2}\int_MT_{\mu\nu}\delta g^{\mu\nu}\epsilon.
+    \end{eqnarray}
+    综上，联立(\ref{eq:delta EHA})(\ref{eq:delta EHA 1})(\ref{eq:delta EHA 2})(\ref{eq:delta EHA 3})我们就得到了
+    \begin{eqnarray}\label{eq:delta EHA 4}
+        \delta S_{EH}=\int_M\left[\frac{1}{2\kappa}\left(R_{\mu\nu}-\frac{1}{2}g_{\mu\nu}R\right)-\frac{1}{2}T_{\mu\nu}\right]\delta g^{\mu\nu}\epsilon.
+    \end{eqnarray}
+    要使$(\ref{eq:delta EHA 4})=0$对任意的$\delta g^{\mu\nu}$均成立，唯有
+    $$\frac{1}{2\kappa}\left(R_{\mu\nu}-\frac{1}{2}g_{\mu\nu}R\right)-\frac{1}{2}T_{\mu\nu}\equiv0,$$
+    即
+    $$R_{\mu\nu}-\frac{1}{2}g_{\mu\nu}R=\kappa T_{\mu\nu}.$$
+    这就证明了(\ref{eq:EH Action}).
+\end{proof}
+
+带宇宙学常数的Einstein-Hilbert作用量为
+\begin{equation}\label{eq:EH Action with Lambda}
+    S_{EH}=\int_M\left[\frac{1}{2\kappa}\left(R-2\Lambda\right)+\mathcal{L} _{Matter}\right]\epsilon,
+\end{equation}
+请证明(\ref{eq:EH Action with Lambda})对应的Euler-Lagrange方程为
+\begin{eqnarray}\label{eq:Field Equation with Lambda}
+    R_{\mu\nu}-\frac{1}{2}g_{\mu\nu}R+\Lambda g_{\mu\nu}=\kappa T_{\mu\nu}.
+\end{eqnarray}
